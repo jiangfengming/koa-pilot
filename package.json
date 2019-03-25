@@ -1,0 +1,38 @@
+{
+  "name": "koa-pilot",
+  "version": "0.0.0",
+  "description": "Just another Koa router",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jiangfengming/koa-pilot.git"
+  },
+  "keywords": [
+    "koa",
+    "router"
+  ],
+  "author": "Jiang Fengming",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jiangfengming/koa-pilot/issues"
+  },
+  "homepage": "https://github.com/jiangfengming/koa-pilot#readme",
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.15.3",
+    "eslint-config-enough": "^0.3.4"
+  },
+  "eslintConfig": {
+    "extends": "enough",
+    "env": {
+      "node": true
+    }
+  },
+  "dependencies": {
+    "koa-compose": "^4.1.0",
+    "url-router": "^7.1.0"
+  }
+}
