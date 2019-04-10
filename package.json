@@ -23,7 +23,8 @@
   "devDependencies": {
     "babel-eslint": "^10.0.1",
     "eslint": "^5.15.3",
-    "eslint-config-enough": "^0.3.4"
+    "eslint-config-enough": "^0.3.4",
+    "koa": "^2.7.0"
   },
   "eslintConfig": {
     "extends": "enough",
@@ -32,7 +33,6 @@
     }
   },
   "dependencies": {
-    "koa-compose": "^4.1.0",
-    "url-router": "^7.1.0"
+    "url-router": "^7.1.4"
   }
 }
