@@ -1,4 +1,4 @@
-const Router = require('url-router')
+const Router = require('url-router/es6')
 
 module.exports = class extends Router {
   constructor(routes) {

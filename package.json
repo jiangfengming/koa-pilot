@@ -33,6 +33,6 @@
     }
   },
   "dependencies": {
-    "url-router": "^7.1.4"
+    "url-router": "^7.1.5"
   }
 }
