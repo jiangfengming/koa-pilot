@@ -1,4 +1,5 @@
-const Router = require('url-router/es6')
+const Router = require('url-router')
+const { StringCaster } = require('cast-string')
 
 module.exports = class extends Router {
   constructor(routes) {
@@ -10,10 +11,10 @@ module.exports = class extends Router {
     const route = this.find(ctx.method, ctx.path, ctx)
 
     if (!route) {
-      ctx.params = {}
       return next()
     } else {
       ctx.params = route.params
+      ctx.queries = new StringCaster(() => ctx.query)
       return route.handler(ctx, next)
     }
   }

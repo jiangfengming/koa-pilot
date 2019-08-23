@@ -9,6 +9,7 @@ const Router = require('koa-pilot')
 const app = new Koa()
 const router = new Router()
 
+router.get('/user/:username', ctx => ctx.body = `hello ${ctx.params.string('username')}. code: ${ctx.queries.int('code')}`)
 router.get('*', ctx => ctx.body = 'hello world')
 app.use(router.routes)
 app.listen(3000)
@@ -30,11 +31,13 @@ new Router([
 `String` | `RegExp`
 
 #### params
-You could define route params in `path`, params are stored in `ctx.params`. for example:
+You could define route params in `path`, params are stored in `ctx.params` as a [StringCaster](https://github.com/jiangfengming/cast-string#stringcaster) object.
+For example:
 
 ```js
-router.get('/people/:username/articles/:articleId', ctx => console.log(ctx.params))
-// { username: ..., articleId: ... }
+router.get('/people/:username/articles/:articleId', ctx => {
+  ctx.body = `username: ${ctx.params.string('username')}. articleId: ${ctx.params.int('articleId')}`
+})
 ```
 
 #### wildcard
@@ -44,14 +47,12 @@ router.get('/people/:username/articles/:articleId', ctx => console.log(ctx.param
 If you need more power, use RegExp. Capture groups will be set as route params, keys are `$1, $2, ...`.
 
 ```js
-router.get(/^\/article\/(\d+)$/, ctx => console.log(ctx.params))
-// { $1: ... }
+router.get(/^\/article\/(\d+)$/, ctx => console.log(ctx.params.int('$1')))
 ```
 
 You can use [named capture groups](http://2ality.com/2017/05/regexp-named-capture-groups.html) introduced in ES2018:
 ```js
-router.get(/^\/article\/(?<id>\d+)$/, ctx => console.log(ctx.params))
-// { id: ... }
+router.get(/^\/article\/(?<id>\d+)$/, ctx => console.log(ctx.params.int('id')))
 ```
 
 ### middleware
@@ -86,6 +87,8 @@ function test(matchedRoute, ctx) {
 }
 ```
 
+`params`: [StringCaster](https://github.com/jiangfengming/cast-string#stringcaster) object.
+
 `ctx`: koa request context.
 
 ## Define routes
@@ -107,6 +110,9 @@ router.trace(path, middleware, [test])
 ```js
 app.use(router.routes)
 ```
+
+## ctx.queries
+Wraps `ctx.query` as a [StringCaster](https://github.com/jiangfengming/cast-string#stringcaster) object.
 
 ## License
 (MIT)[LICENSE]
