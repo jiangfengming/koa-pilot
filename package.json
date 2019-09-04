@@ -1,6 +1,6 @@
 {
   "name": "koa-pilot",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Just another Koa router",
   "main": "index.js",
   "scripts": {
