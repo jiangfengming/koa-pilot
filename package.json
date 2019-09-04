@@ -33,6 +33,6 @@
   },
   "dependencies": {
     "cast-string": "^0.3.0",
-    "url-router": "^9.0.0"
+    "url-router": "^9.0.1"
   }
 }
