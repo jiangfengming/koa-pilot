@@ -8,7 +8,7 @@ module.exports = class extends Router {
   }
 
   routes(ctx, next) {
-    const route = this.find(ctx.method, ctx.path, ctx)
+    const route = this.find(ctx.method, ctx.path)
 
     if (!route) {
       return next()

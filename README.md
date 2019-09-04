@@ -15,11 +15,10 @@ app.use(router.routes)
 app.listen(3000)
 ```
 
-
 ## Constructor
 ```js
 new Router([
-  [method?, path, handler, test?],
+  [method?, path, middleware],
   ...
 ])
 ```
@@ -64,44 +63,17 @@ const compose = require('koa-compose')
 router.get('/foo', compose([middleware1, middleware2, ...]))
 ```
 
-### test
-`Function.` Optional. Your custom test function to test against the request.
-If test function is defined, the route will be matched only if:
-1. The request path is matched with route's path
-2. The test function is passed (returns `true`)
-
-```js
-function test(matchedRoute, ctx) {
-  // should return true or false
-}
-```
-
-`matchedRoute`: `Object`.
-
-```js
-{
-  method,
-  path,
-  handler,
-  params
-}
-```
-
-`params`: [StringCaster](https://github.com/jiangfengming/cast-string#stringcaster) object.
-
-`ctx`: koa request context.
-
 ## Define routes
 ```js
-router.add([method = 'GET'], path, middleware, [test])
-router.get(path, middleware, [test])
-router.post(path, middleware, [test])
-router.put(path, middleware, [test])
-router.delete(path, middleware, [test])
-router.patch(path, middleware, [test])
-router.head(path, middleware, [test])
-router.options(path, middleware, [test])
-router.trace(path, middleware, [test])
+router.add([method = 'GET'], path, middleware)
+router.get(path, middleware)
+router.post(path, middleware)
+router.put(path, middleware)
+router.delete(path, middleware)
+router.patch(path, middleware)
+router.head(path, middleware)
+router.options(path, middleware)
+router.trace(path, middleware)
 ```
 
 ## router.routes
