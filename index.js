@@ -4,7 +4,7 @@ const { StringCaster } = require('cast-string')
 const methods = ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD', 'OPTIONS', 'TRACE']
 
 module.exports = class {
-  constructor(...routes) {
+  constructor(routes) {
     this.middleware = this.middleware.bind(this)
     this._routes = {}
     methods.forEach(method => this._routes[method] = new Router())

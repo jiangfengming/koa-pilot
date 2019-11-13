@@ -7,14 +7,13 @@ const Koa = require('koa')
 const Router = require('koa-pilot')
 
 const app = new Koa()
-const router = new Router()
 
-router.get(
-  '/user/:username',
-  ctx => ctx.body = `hello ${ctx.params.string('username')}. code: ${ctx.queries.int('code')}`
-)
+const router = new Router([
+  ['GET', '/', ctx => ctx.body = 'hello world'],
+  ['/user/:username', ctx => ctx.body = `hello ${ctx.params.string('username')}. code: ${ctx.queries.int('code')}`]
+])
 
-router.get('(.*)', ctx => ctx.body = 'hello world')
+router.get('(.*)', ctx => ctx.body = '404')
 
 app.use(router.middleware)
 app.listen(3000)
@@ -22,14 +21,16 @@ app.listen(3000)
 
 ## Constructor
 ```js
-new Router(
+new Router([
   [method?, pattern, middleware],
   ...
-)
+])
 ```
 
 ### method
-`String.` Optional. HTTP method, case-sensitive. `GET`, `POST`, `PUT`, `DELETE`, `PATCH`, `HEAD`, `OPTIONS`, `TRACE`.
+`String.` Optional, defaults to `GET`. HTTP method, case-sensitive.
+
+methods: `GET`, `POST`, `PUT`, `DELETE`, `PATCH`, `HEAD`, `OPTIONS`, `TRACE`.
 
 ### pattern
 See [url-router#pattern](https://github.com/jiangfengming/url-router#pattern).
@@ -46,17 +47,21 @@ router.get('/foo', compose([middleware1, middleware2, ...]))
 ```
 
 ## Define routes
+
 ```js
-router.add([method = 'GET'], path, middleware)
-router.get(path, middleware)
-router.post(path, middleware)
-router.put(path, middleware)
-router.delete(path, middleware)
-router.patch(path, middleware)
-router.head(path, middleware)
-router.options(path, middleware)
-router.trace(path, middleware)
+router
+  .add(method?, path, middleware)
+  .get(path, middleware)
+  .post(path, middleware)
+  .put(path, middleware)
+  .delete(path, middleware)
+  .patch(path, middleware)
+  .head(path, middleware)
+  .options(path, middleware)
+  .trace(path, middleware)
 ```
+
+These methods return the router instance. So you could use method chaining.
 
 ## router.middleware
 `Function`. The router middleware.
