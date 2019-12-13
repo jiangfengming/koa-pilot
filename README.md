@@ -1,5 +1,5 @@
 # koa-pilot
-Just another Koa router.
+A Trie-based Koa router.
 
 ## Usage
 ```js
