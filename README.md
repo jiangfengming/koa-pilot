@@ -74,4 +74,4 @@ app.use(router.middleware)
 Wraps `ctx.query` as a [StringCaster](https://github.com/jiangfengming/cast-string#stringcaster) object.
 
 ## License
-(MIT)[LICENSE]
+[MIT](LICENSE)
