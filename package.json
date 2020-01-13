@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/jiangfengming/koa-pilot#readme",
   "devDependencies": {
-    "eslint": "^6.7.2",
+    "eslint": "^6.8.0",
     "eslint-config-enough": "^0.3.8",
     "koa": "^2.11.0"
   },
@@ -33,6 +33,6 @@
   },
   "dependencies": {
     "cast-string": "^0.3.0",
-    "url-router": "^11.0.1"
+    "url-router": "^11.0.2"
   }
 }
