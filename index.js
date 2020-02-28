@@ -8,7 +8,10 @@ module.exports = class {
     this.middleware = this.middleware.bind(this)
     this._routes = {}
     methods.forEach(method => this._routes[method] = new Router())
-    routes.forEach(route => this.add(...route))
+
+    if (routes) {
+      routes.forEach(route => this.add(...route))
+    }
   }
 
   add() {
