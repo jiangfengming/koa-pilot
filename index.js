@@ -1,7 +1,7 @@
 const Router = require('url-router')
 const { StringCaster } = require('cast-string')
 
-const methods = ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD', 'OPTIONS', 'TRACE']
+const methods = ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD', 'OPTIONS', 'TRACE', 'PURGE']
 
 module.exports = class {
   constructor(routes) {
@@ -54,6 +54,10 @@ module.exports = class {
 
   trace(pattern, middleware) {
     return this.add('TRACE', pattern, middleware)
+  }
+
+  purge(pattern, middleware) {
+    return this.add('PURGE', pattern, middleware)
   }
 
   find(method, path) {
