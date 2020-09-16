@@ -30,7 +30,7 @@ new Router([
 ### method
 `String.` Optional, defaults to `GET`. HTTP method, case-sensitive.
 
-methods: `GET`, `POST`, `PUT`, `DELETE`, `PATCH`, `HEAD`, `OPTIONS`, `TRACE`.
+methods: `GET`, `POST`, `PUT`, `DELETE`, `PATCH`, `HEAD`, `OPTIONS`, `TRACE`, `PURGE`.
 
 ### pattern
 See [url-router#pattern](https://github.com/jiangfengming/url-router#pattern).
@@ -59,6 +59,7 @@ router
   .head(path, middleware)
   .options(path, middleware)
   .trace(path, middleware)
+  .purge(path, middleware)
 ```
 
 These methods return the router instance. So you could use method chaining.
