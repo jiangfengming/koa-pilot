@@ -1,5 +1,5 @@
-const Koa = require('koa');
-const Router = require('.');
+import Koa from 'koa';
+import Router from './dist/index.js';
 
 const app = new Koa();
 

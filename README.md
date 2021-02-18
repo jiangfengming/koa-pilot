@@ -1,22 +1,24 @@
 # koa-pilot
-A Trie-based Koa router.
+A Trie-based Koa router, based on [url-router](https://github.com/jiangfengming/url-router).
+
+NOTE: This package is written in ES2020 syntax and not transpiled. It is tested only on Node.js v14+.
 
 ## Usage
 ```js
-const Koa = require('koa')
-const Router = require('koa-pilot')
+import Koa from 'koa';
+import Router from './dist/index.js';
 
-const app = new Koa()
+const app = new Koa();
 
 const router = new Router([
   ['GET', '/', ctx => ctx.body = 'hello world'],
   ['/user/:username', ctx => ctx.body = `hello ${ctx.params.string('username')}. code: ${ctx.queries.int('code')}`]
-])
+]);
 
-router.get('(.*)', ctx => ctx.body = '404')
+router.get('(.*)', ctx => ctx.body = '404');
 
-app.use(router.middleware)
-app.listen(3000)
+app.use(router.middleware);
+app.listen(3000);
 ```
 
 ## Constructor
@@ -50,7 +52,7 @@ router.get('/foo', compose([middleware1, middleware2, ...]))
 
 ```js
 router
-  .add(method?, path, middleware)
+  .add(method, path, middleware)
   .get(path, middleware)
   .post(path, middleware)
   .put(path, middleware)
