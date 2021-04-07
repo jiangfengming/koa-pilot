@@ -1,7 +1,12 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const url_router_1 = require("url-router");
-const cast_string_1 = require("cast-string");
+'use strict';
+
+var URLRouter = require('url-router');
+var castString = require('cast-string');
+
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+var URLRouter__default = /*#__PURE__*/_interopDefaultLegacy(URLRouter);
+
 const methods = ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD', 'OPTIONS', 'TRACE', 'PURGE'];
 class Router {
     constructor(routes) {
@@ -9,8 +14,8 @@ class Router {
         this.middleware = (ctx, next) => {
             const route = this.find(ctx.method, ctx.path);
             if (route) {
-                ctx.params = new cast_string_1.StringCaster(route.params);
-                ctx.queries = new cast_string_1.StringCaster(() => ctx.query);
+                ctx.params = new castString.StringCaster(route.params);
+                ctx.queries = new castString.StringCaster(() => ctx.query);
                 return route.handler(ctx, next);
             }
             else {
@@ -18,7 +23,7 @@ class Router {
             }
         };
         this.middleware = this.middleware.bind(this);
-        methods.forEach(method => this.routes[method] = new url_router_1.default());
+        methods.forEach(method => this.routes[method] = new URLRouter__default['default']());
         if (routes) {
             routes.forEach(route => {
                 if (route.length === 2) {
@@ -65,4 +70,5 @@ class Router {
         return this.routes[method]?.find(path) || null;
     }
 }
-exports.default = Router;
+
+module.exports = Router;

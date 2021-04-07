@@ -12,7 +12,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc -m CommonJS && mv dist/index.js dist/index.cjs && tsc -d"
+    "build": "tsc -d && rollup -c"
   },
   "repository": {
     "type": "git",
@@ -29,15 +29,16 @@
   },
   "homepage": "https://github.com/jiangfengming/koa-pilot#readme",
   "devDependencies": {
-    "@types/koa": "^2.11.8",
-    "@typescript-eslint/eslint-plugin": "^4.15.1",
-    "@typescript-eslint/parser": "^4.15.1",
-    "eslint": "^7.20.0",
+    "@rollup/plugin-typescript": "^8.2.1",
+    "@types/koa": "^2.13.1",
+    "@typescript-eslint/eslint-plugin": "^4.21.0",
+    "@typescript-eslint/parser": "^4.21.0",
+    "eslint": "^7.23.0",
     "eslint-config-enough": "^0.7.0",
     "eslint-plugin-ext": "^0.1.0",
     "koa": "^2.13.1",
-    "rollup": "^2.39.0",
-    "typescript": "^4.1.5"
+    "rollup": "^2.44.0",
+    "typescript": "^4.2.3"
   },
   "dependencies": {
     "cast-string": "^0.5.1",

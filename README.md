@@ -6,7 +6,7 @@ NOTE: This package is written in ES2020 syntax and not transpiled. It is tested 
 ## Usage
 ```js
 import Koa from 'koa';
-import Router from './dist/index.js';
+import Router from 'koa-pilot';
 
 const app = new Koa();
 
