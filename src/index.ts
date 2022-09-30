@@ -2,6 +2,13 @@ import URLRouter from 'url-router';
 import { StringCaster } from 'cast-string';
 import { Middleware } from 'koa';
 
+declare module 'koa' {
+  interface DefaultContext {
+    params: StringCaster;
+    queries: StringCaster;
+  }
+}
+
 type Method = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'TRACE' | 'PURGE';
 type Route = [method: Method, pattern: string, middleware: Middleware] | [pattern: string, middleware: Middleware];
 
@@ -66,7 +73,7 @@ export default class Router {
     return this.add('PURGE', pattern, handler);
   }
 
-  find(method: Method, path: string): { handler: Middleware, params: Record<string, string> } | null {
+  find(method: Method, path: string): { handler: Middleware; params: Record<string, string> } | null {
     return this.routes[method]?.find(path) || null;
   }
 
@@ -80,5 +87,5 @@ export default class Router {
     } else {
       return next();
     }
-  }
+  };
 }

@@ -1,4 +1,11 @@
+import { StringCaster } from 'cast-string';
 import { Middleware } from 'koa';
+declare module 'koa' {
+    interface DefaultContext {
+        params: StringCaster;
+        queries: StringCaster;
+    }
+}
 declare type Method = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'TRACE' | 'PURGE';
 declare type Route = [method: Method, pattern: string, middleware: Middleware] | [pattern: string, middleware: Middleware];
 export default class Router {

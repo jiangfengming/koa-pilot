@@ -23,7 +23,7 @@ class Router {
             }
         };
         this.middleware = this.middleware.bind(this);
-        methods.forEach(method => this.routes[method] = new URLRouter__default['default']());
+        methods.forEach(method => this.routes[method] = new URLRouter__default["default"]());
         if (routes) {
             routes.forEach(route => {
                 if (route.length === 2) {
